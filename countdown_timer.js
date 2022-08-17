@@ -37,21 +37,25 @@ function display(seconds) {
 
     var daysDisplay = document.createElement('div');
     daysDisplay.setAttribute("id", "day_display");
+    daysDisplay.setAttribute("class", "display");
     daysDisplay.textContent = `${days} days`;
     displayBox.appendChild(daysDisplay);
 
     var hoursDisplay = document.createElement('div');
     hoursDisplay.setAttribute("id", "hour_display");
+    hoursDisplay.setAttribute("class", "display");
     hoursDisplay.textContent = `${hours} hours`;
     displayBox.appendChild(hoursDisplay);
 
     var minutesDisplay = document.createElement('div');
     minutesDisplay.setAttribute("id", "minute_display");
+    minutesDisplay.setAttribute("class", "display");
     minutesDisplay.textContent = `${minutes} minutes`;
     displayBox.appendChild(minutesDisplay);
 
     var secondsDisplay = document.createElement('div');
     secondsDisplay.setAttribute("id", "second_display");
+    secondsDisplay.setAttribute("class", "display");
     secondsDisplay.textContent = `${remainingSeconds} seconds`;
     displayBox.appendChild(secondsDisplay);
 };

@@ -7,7 +7,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 0.5fr 1fr 0.5fr 0.5fr;
-    gap: 20px;
+    gap: 40px;
 }
 
 body::before {
@@ -32,10 +32,11 @@ body::before {
     grid-row: 2 / 3;
     height: 300px;
     width: 650px;
+    margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto minmax(0,0.75fr);
-    gap: 15px;
+    gap: 5px;
     border: 10px solid black;
     border-radius: 300px;
     padding: 20px;
@@ -104,6 +105,7 @@ input {
     height: 30px;
     width: 80px;
     border-radius: 20px;
+    text-align: center;
 }
 
 #display {
@@ -111,21 +113,33 @@ input {
     grid-row: 3 / 4;
     padding: 10px;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 0.5fr 0.75fr 0.75fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 0.5fr 0.75fr 0.75fr 0.75fr 0.75fr 0.5fr;
+    grid-template-rows: 1.75fr 1fr;
+    width: 800px;
+    height: 200px;
+    background:rgba(128,128,128, 0.45);
+    transform: perspective(10px) rotateX(2deg);
+    margin: auto;
+    border: 10px solid black;
+    border-radius: 20px;
 }
 
-#display > * {
+.display {
     margin: auto;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 5px solid black;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #display > h1 {
     text-align: center;
-    font-size: xx-large;
+    font-size: 70px;
     font-family: Arial, Helvetica, sans-serif;
     grid-column: 1 / 7;
+    margin: auto;
 }
 
 #day_display {
