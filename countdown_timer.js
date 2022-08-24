@@ -7,21 +7,26 @@ var secondsDays = 0;
 var secondsHours = 0;
 var secondsMinutes = 0;
 
-function display(seconds) {
+
+function displayAll(seconds) {
     // calculate (and subtract) whole days
     var days = Math.floor(seconds / 86400);
+    var dayName = "day";
     seconds -= days * 86400;
 
     // calculate (and subtract) whole hours
     var hours = Math.floor(seconds / 3600) % 24;
+    var hourName = "hour";
     seconds -= hours * 3600;
 
     // calculate (and subtract) whole minutes
     var minutes = Math.floor(seconds / 60) % 60;
+    var minuteName = "minute";
     seconds -= minutes * 60;
 
     // what's left is seconds
-    var remainingSeconds = seconds % 60; 
+    var remainingSeconds = seconds % 60;
+    var secondName = "second" 
     
     if (displayBox.childElementCount > 1) {
         var days1 = document.querySelector('#day_display');
@@ -35,29 +40,43 @@ function display(seconds) {
         displayBox.removeChild(seconds1);
     }
 
-    var daysDisplay = document.createElement('div');
-    daysDisplay.setAttribute("id", "day_display");
-    daysDisplay.setAttribute("class", "display");
-    daysDisplay.textContent = `${days} days`;
-    displayBox.appendChild(daysDisplay);
+    
+    displayTimes(days, dayName);
+    displayTimes(hours, hourName);
+    displayTimes(minutes, minuteName);
+    displayTimes(remainingSeconds, secondName);
+    
+    // var daysDisplay = document.createElement('div');
+    // daysDisplay.setAttribute("id", "day_display");
+    // daysDisplay.setAttribute("class", "display");
+    // daysDisplay.textContent = `${days} days`;
+    // displayBox.appendChild(daysDisplay);
 
-    var hoursDisplay = document.createElement('div');
-    hoursDisplay.setAttribute("id", "hour_display");
-    hoursDisplay.setAttribute("class", "display");
-    hoursDisplay.textContent = `${hours} hours`;
-    displayBox.appendChild(hoursDisplay);
+    // var hoursDisplay = document.createElement('div');
+    // hoursDisplay.setAttribute("id", "hour_display");
+    // hoursDisplay.setAttribute("class", "display");
+    // hoursDisplay.textContent = `${hours} hours`;
+    // displayBox.appendChild(hoursDisplay);
 
-    var minutesDisplay = document.createElement('div');
-    minutesDisplay.setAttribute("id", "minute_display");
-    minutesDisplay.setAttribute("class", "display");
-    minutesDisplay.textContent = `${minutes} minutes`;
-    displayBox.appendChild(minutesDisplay);
+    // var minutesDisplay = document.createElement('div');
+    // minutesDisplay.setAttribute("id", "minute_display");
+    // minutesDisplay.setAttribute("class", "display");
+    // minutesDisplay.textContent = `${minutes} minutes`;
+    // displayBox.appendChild(minutesDisplay);
 
-    var secondsDisplay = document.createElement('div');
-    secondsDisplay.setAttribute("id", "second_display");
-    secondsDisplay.setAttribute("class", "display");
-    secondsDisplay.textContent = `${remainingSeconds} seconds`;
-    displayBox.appendChild(secondsDisplay);
+    // var secondsDisplay = document.createElement('div');
+    // secondsDisplay.setAttribute("id", "second_display");
+    // secondsDisplay.setAttribute("class", "display");
+    // secondsDisplay.textContent = `${remainingSeconds} seconds`;
+    // displayBox.appendChild(secondsDisplay);
+};
+
+function displayTimes(timeValue, timeName) {
+    var timeDisplay = document.createElement('div');
+    timeDisplay.setAttribute("id", `${timeName}_display`);
+    timeDisplay.setAttribute("class", "display");
+    timeDisplay.textContent = `${timeValue} ${timeName}s`;
+    displayBox.appendChild(timeDisplay);
 };
 
 function startTimer() {
@@ -76,9 +95,9 @@ function startTimer() {
     countdownTimer = setInterval(function(){
         if(totalSeconds <= 0) {
             clearInterval(countdownTimer);
-            display(totalSeconds);
+            displayAll(totalSeconds);
         } else {
-            display(totalSeconds);
+            displayAll(totalSeconds);
         }
         totalSeconds -= 1;
     }, 1000);
