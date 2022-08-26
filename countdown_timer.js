@@ -82,5 +82,10 @@ function stopTimer() {
     clearInterval(countdownTimer);
 };
 
+function continueTimer() {
+    startTimer();
+    intervalID = setInterval(startTimer, 1000);
+};
+
 // startButton.addEventListener('click', startTimer);
 // stopButton.addEventListener('click', stopTimer);
