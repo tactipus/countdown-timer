@@ -1,12 +1,26 @@
 const startButton = document.querySelector("#start");
 const stopButton = document.querySelector('#stop');
 const displayBox = document.querySelector("#display");
-var countdownTimer;
 
-var secondsDays = 0;
-var secondsHours = 0;
-var secondsMinutes = 0;
+let counter = null;
+var totalSeconds = 0;
 
+function getInputValues() {
+    var days = document.getElementById("day");
+    var hours = document.getElementById("hour");
+    var minutes = document.getElementById("minute");
+
+    if(days.value < 1 || hours.value > 23 || hours.value < 1 || minutes.value > 59 || minutes.value < 1) {
+        alert("Incorrect input. Kindly enter at least one hour, one to 23 hours, and one to 59 minutes");
+        location.reload();
+    };
+
+    var secondsDays = 86400 * days.value;
+    var secondsHours = 3600 * hours.value;
+    var secondsMinutes = 60 * minutes.value;
+    totalSeconds = secondsDays + secondsHours + secondsMinutes;
+    return totalSeconds;
+}
 
 function displayAll(seconds) {
     // calculate (and subtract) whole days
@@ -54,38 +68,22 @@ function displayTimes(timeValue, timeName) {
     displayBox.appendChild(timeDisplay);
 };
 
-function startTimer() {
-    stopTimer();
-    
-    var days = document.getElementById("day");
-    var hours = document.getElementById("hour");
-    var minutes = document.getElementById("minute");
+function startTimer() {  
+    if(totalSeconds == 0) {
+        totalSeconds =  getInputValues();
+    }
 
-    var secondsDays = 86400 * days.value;
-    var secondsHours = 3600 * hours.value;
-    var secondsMinutes = 60 * minutes.value;
-
-    var totalSeconds = secondsDays + secondsHours + secondsMinutes;
-    
-    countdownTimer = setInterval(function(){
-        if(totalSeconds <= 0) {
-            clearInterval(countdownTimer);
-            displayAll(totalSeconds);
-        } else {
-            displayAll(totalSeconds);
-        }
+    counter = setInterval(function(){
         totalSeconds -= 1;
+        displayAll(totalSeconds);
     }, 1000);
 };
-
-function stopTimer() {
-    clearInterval(countdownTimer);
+  
+const startOrStop = () => {
+    if (counter) {
+        clearInterval(counter);
+        counter = null;
+    } else {
+        startTimer();
+    }
 };
-
-function continueTimer() {
-    startTimer();
-    intervalID = setInterval(startTimer, 1000);
-};
-
-// startButton.addEventListener('click', startTimer);
-// stopButton.addEventListener('click', stopTimer);

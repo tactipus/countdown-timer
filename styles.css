@@ -54,30 +54,10 @@ body::before {
 }
 
 #timer > #start {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    height: 50px;
-    width: 100px;
-    font-size: large;
-    border-radius: 50px;
-    margin: auto;
-}
-
-#timer > #stop {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
     height: 50px;
-    width: 100px;
-    font-size: large;
-    border-radius: 50px;
-    margin: auto;
-}
-
-#timer > #continue {
-    grid-column: 3 / 4;
-    grid-row: 3 / 4;
-    height: 50px;
-    width: 100px;
+    width: 150px;
     font-size: large;
     border-radius: 50px;
     margin: auto;
