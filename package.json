@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "jest-environment-jsdom": "^29.0.1"
+  },
+  "dependencies": {
+    "picomatch": "^2.3.1"
+  }
+}
