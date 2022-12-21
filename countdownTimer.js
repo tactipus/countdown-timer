@@ -79,6 +79,9 @@ function startTimer() {
     }
     // counter is given a value and totalSeconds is decremented
     counter = setInterval(function(){
+        if(totalSeconds == 0) {
+            endTime();
+        }
         totalSeconds -= 1;
         displayAll(totalSeconds);
     }, 1000);
@@ -96,5 +99,13 @@ const startOrStop = () => {
         startTimer();
     }
 };
+
+function endTime() {
+        var endDisplay = document.createElement('div');
+        endDisplay.setAttribute("id", `end_display`);
+        endDisplay.setAttribute("class", "display");
+        endDisplay.textContent = `Time is up, friendo...`;
+        displayBox.appendChild(endDisplay);
+}
 
 module.exports = displayAll;
